@@ -35,10 +35,13 @@ set background=dark
 let g:gruvbox_contrast_dark = 'medium'
 let g:gruvbox_termcolors = 256
 
-set tabstop=4
-set shiftwidth=4
+filetype plugin indent on
+set autoindent
 set noexpandtab
-retab
+set tabstop=8
+set shiftwidth=8
+set cindent
+"retab
 
 set tags=./tags,tags;$HOME     " looking for tags file in parent directory if not found
 
@@ -57,7 +60,6 @@ set hlsearch            " highlight matches
 set runtimepath^=~/.vim/bundle/ctrlp.vim     " Enable ctrl p
 set directory^=$HOME/.vim/tmp//
 
-filetype plugin indent on
 syntax on
 set title
 
@@ -75,6 +77,7 @@ let mapleader=" "
 " nnoremap <C-p> :cp<CR>
 
 " Key mapps for YCM
+
 nnoremap <leader>gt :YcmCompleter GoTo<CR>
 
 nnoremap <leader>fi :YcmCompleter FixIt<CR>
@@ -92,6 +95,12 @@ nnoremap <leader>gdf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gdc :YcmCompleter GoToDeclaration<CR>
 
 nnoremap <leader>yd :YcmDiags<CR>
+
+nmap <leader>yfw <Plug>(YCMFindSymbolInWorkspace) 
+
+nmap <leader>yfd <Plug>(YCMFindSymbolInDocument)
+
+let g:ycm_enable_inlay_hints = 1
 
 " Syntastic settings
 set statusline+=%#warningmsg#
@@ -166,6 +175,7 @@ set undodir=.undo/,~/.undo/,/tmp//
 " airline
 let g:airline_powerline_fonts = 1
 
+let g:airline#extensions#branch#enabled = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
