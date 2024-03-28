@@ -6,7 +6,7 @@ return require('packer').startup(function(use)
   use ('wbthomason/packer.nvim')
 
   use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.1',
+	  'nvim-telescope/telescope.nvim', tag = '0.1.4',
 	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
@@ -28,7 +28,7 @@ return require('packer').startup(function(use)
     config = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
-      require("which-key").setup()
+      require("whichkey")
         -- your configuration comes here
         -- or leave it empty to use the default settings
         -- refer to the configuration section below

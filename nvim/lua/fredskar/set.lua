@@ -19,6 +19,7 @@ vim.opt.colorcolumn = "80"
 vim.g.mapleader = " "
 
 vim.opt.autoindent = true
-vim.opt.expandtab = true
+vim.opt.expandtab = false
 vim.opt.tabstop = 8
 vim.opt.shiftwidth = 8
+
