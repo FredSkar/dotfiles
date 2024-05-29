@@ -23,3 +23,5 @@ vim.opt.expandtab = false
 vim.opt.tabstop = 8
 vim.opt.shiftwidth = 8
 
+vim.o.background = "dark" -- or "light" for light mode
+vim.cmd([[colorscheme gruvbox]])
