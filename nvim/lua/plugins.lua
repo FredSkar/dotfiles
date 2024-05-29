@@ -10,12 +10,12 @@ return require('packer').startup(function(use)
 	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
---
---  use {
---          'nvim-treesitter/nvim-treesitter', tag = 'v0.9.0'
---  }
---
-  use ('vim-scripts/DrawIt') 
+
+  use {
+          'github/copilot.vim', branch = 'release'
+  }
+
+  use ('vim-scripts/DrawIt')
 
   use({
     "iamcco/markdown-preview.nvim",
@@ -47,7 +47,7 @@ return require('packer').startup(function(use)
 		  end,
 		  },
 		  {'williamboman/mason-lspconfig.nvim'}, -- Optional
-	
+
 		  -- Autocompletion
 		  {'hrsh7th/nvim-cmp'},     -- Required
 		  {'hrsh7th/cmp-nvim-lsp'}, -- Required
@@ -56,4 +56,4 @@ return require('packer').startup(function(use)
 	}
   use('ellisonleao/gruvbox.nvim')
   use('alexghergh/nvim-tmux-navigation')
-end) 
+end)
