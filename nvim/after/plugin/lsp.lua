@@ -4,6 +4,7 @@ lsp.on_attach(function(client, bufnr)
   -- see :help lsp-zero-keybindings
   -- to learn the available actions
   lsp.default_keymaps({buffer = bufnr})
+  vim.lsp.client.offset_encoding = {"utf-8"}
 end)
 
 lsp.setup()

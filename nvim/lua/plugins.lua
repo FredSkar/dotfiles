@@ -34,6 +34,16 @@ return require('packer').startup(function(use)
         -- refer to the configuration section below
     end,
   }
+
+  -- Icons used by which-key
+  use {
+	"nvim-tree/nvim-web-devicons",
+  }
+  use {
+	"echasnovski/mini.icons",
+  }
+
+  -- LSP
   use {
 	  'VonHeikemen/lsp-zero.nvim',
 	  branch = 'v2.x',

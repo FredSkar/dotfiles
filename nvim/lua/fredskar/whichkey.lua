@@ -47,28 +47,26 @@ local mappings = {
 
 -- Whichkey
 local keymap_l = {
-  l = {
-    name = "Code",
-    r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
-    a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
-    d = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Line Diagnostics" },
-    i = { "<cmd>LspInfo<CR>", "Lsp Info" },
-  },
+    { "<leader>l", group = "Code" },
+    { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "Code Action" },
+    { "<leader>ld", "<cmd>lua vim.diagnostic.open_float()<CR>", desc = "Line Diagnostics" },
+    { "<leader>li", "<cmd>LspInfo<CR>", desc = "Lsp Info" },
+    { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", desc = "Rename" },
 }
 -- if client.resolved_capabilities.document_formatting then
 --   keymap_l.l.f = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "Format Document" }
 -- end
 
 local keymap_g = {
-  name = "Goto",
-  d = { "<Cmd>lua vim.lsp.buf.definition()<CR>", "Definition" },
-  D = { "<Cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration" },
-  s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help" },
-  I = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto Implementation" },
-  t = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Goto Type Definition" },
+    { "g", group = "Goto" },
+    { "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", desc = "Declaration" },
+    { "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", desc = "Goto Implementation" },
+    { "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", desc = "Definition" },
+    { "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", desc = "Signature Help" },
+    { "gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", desc = "Goto Type Definition" },
 }
-whichkey.register(keymap_l, { buffer = bufnr, prefix = "<leader>" })
-whichkey.register(keymap_g, { buffer = bufnr, prefix = "g" })
+whichkey.add(keymap_l, { buffer = bufnr, prefix = "<leader>" })
+whichkey.add(keymap_g, { buffer = bufnr, prefix = "g" })
 
 
 whichkey.setup(conf)
