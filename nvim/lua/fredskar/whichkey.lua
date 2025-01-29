@@ -2,13 +2,14 @@
 
 --function M.setup()
 local whichkey = require "which-key"
+local builtin = require('telescope.builtin')
 
-local conf = {
-  window = {
-    border = "single", -- none, single, double, shadow
-    position = "bottom", -- bottom, top
-  },
-}
+--local conf = {
+--  window = {
+--    border = "single", -- none, single, double, shadow
+--    position = "bottom", -- bottom, top
+--  },
+--}
 
 local opts = {
   mode = "n", -- Normal mode
@@ -19,24 +20,44 @@ local opts = {
   nowait = false, -- use `nowait` when creating keymaps
 }
 
-local mappings = {
-  ["w"] = { "<cmd>update!<CR>", "Save" },
-  ["q"] = { "<cmd>q!<CR>", "Quit" },
+--local mappings = {
+--  ["w"] = { "<cmd>update!<CR>", "Save" },
+--  ["q"] = { "<cmd>q!<CR>", "Quit" },
+--
+--  b = {
+--    name = "Buffer",
+--    c = { "<Cmd>bd!<Cr>", "Close current buffer" },
+--    D = { "<Cmd>%bd|e#|bd#<Cr>", "Delete all buffers" },
+--  },
+--
+--  z = {
+--    name = "Packer",
+--    c = { "<cmd>PackerCompile<cr>", "Compile" },
+--    i = { "<cmd>PackerInstall<cr>", "Install" },
+--    s = { "<cmd>PackerSync<cr>", "Sync" },
+--    S = { "<cmd>PackerStatus<cr>", "Status" },
+--    u = { "<cmd>PackerUpdate<cr>", "Update" },
+--  },
+--}
 
-  b = {
-    name = "Buffer",
-    c = { "<Cmd>bd!<Cr>", "Close current buffer" },
-    D = { "<Cmd>%bd|e#|bd#<Cr>", "Delete all buffers" },
-  },
+local keymap_others = {
+    { "<leader>w", "<cmd>update!<CR>", desc = "Save" },
+    { "<leader>q", "<cmd>q!<CR>", desc = "Quit" },
+}
 
-  z = {
-    name = "Packer",
-    c = { "<cmd>PackerCompile<cr>", "Compile" },
-    i = { "<cmd>PackerInstall<cr>", "Install" },
-    s = { "<cmd>PackerSync<cr>", "Sync" },
-    S = { "<cmd>PackerStatus<cr>", "Status" },
-    u = { "<cmd>PackerUpdate<cr>", "Update" },
-  },
+local keymap_b = {
+    { "b", group = "Buffer" },
+    { "bc", "<Cmd>bd!<Cr>", desc = "Close current buffer" },
+    { "bD", "<Cmd>%bd|e#|bd#<Cr>", desc = "Delete all buffers" },
+}
+
+local keymap_Z = {
+    { "Z", group = "Packer" },
+    { "Zc", "<cmd>PackerCompile<cr>", desc = "Compile" },
+    { "Zi", "<cmd>PackerInstall<cr>", desc = "Install" },
+    { "Zs", "<cmd>PackerSync<cr>", desc = "Sync" },
+    { "ZS", "<cmd>PackerStatus<cr>", desc = "Status" },
+    { "Zu", "<cmd>PackerUpdate<cr>", desc = "Update" },
 }
 -- Key mappings
 -- buf_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
@@ -65,12 +86,32 @@ local keymap_g = {
     { "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", desc = "Signature Help" },
     { "gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", desc = "Goto Type Definition" },
 }
-whichkey.add(keymap_l, { buffer = bufnr, prefix = "<leader>" })
-whichkey.add(keymap_g, { buffer = bufnr, prefix = "g" })
+
+-- telescope find keymaps
+local keymap_f = {
+    { "<leader>f", group = "File search"},
+    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find file" },
+    { "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Find git file" },
+    { "<leader>fl", "<cmd>Telescope live_grep<cr>", desc = "Live grep in files" },
+    { "<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Fuzzy find in buffer" },
+    { "<leader>fs", function() builtin.grep_string({ search = vim.fn.input("Grep > ") });
+    end, desc = "Search in files" },
+    { "<leader>fu", "<cmd>Telescope lsp_outgoing_calls<cr>", desc = "Find usage" },
+    { "<leader>fc", "<cmd>Telescope lsp_incoming_calls<cr>", desc = "Find callers" },
+}
+
+--whichkey.add(conf)
+whichkey.add(opts)
+whichkey.add(keymap_others)
+whichkey.add(keymap_l)
+whichkey.add(keymap_g)
+whichkey.add(keymap_Z)
+whichkey.add(keymap_b)
+whichkey.add(keymap_f)
 
 
-whichkey.setup(conf)
-whichkey.register(mappings, opts)
+--whichkey.setup(conf)
+--whichkey.register(mappings, opts)
 --end
 
 --return M
