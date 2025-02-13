@@ -14,7 +14,7 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "120"
 
 vim.g.mapleader = " "
 
@@ -24,4 +24,3 @@ vim.opt.tabstop = 8
 vim.opt.shiftwidth = 8
 
 vim.o.background = "dark" -- or "light" for light mode
-vim.cmd([[colorscheme gruvbox]])
