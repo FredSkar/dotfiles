@@ -1,6 +1,7 @@
 return {
   {
     'williamboman/mason.nvim',
+    version = '*',
     lazy = false,
     opts = {},
   },
@@ -8,6 +9,7 @@ return {
   -- Autocompletion
   {
     'hrsh7th/nvim-cmp',
+    version = '*',
     event = 'InsertEnter',
     config = function()
       local cmp = require('cmp')
@@ -33,6 +35,7 @@ return {
   -- LSP
   {
     'neovim/nvim-lspconfig',
+    version = '*',
     cmd = {'LspInfo', 'LspInstall', 'LspStart'},
     event = {'BufReadPre', 'BufNewFile'},
     dependencies = {

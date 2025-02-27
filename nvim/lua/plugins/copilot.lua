@@ -1,3 +1,3 @@
 return {
-    'github/copilot.vim', branch = 'release'
+    'github/copilot.vim', version = '*',
 }
