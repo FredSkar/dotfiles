@@ -1,9 +1,30 @@
+-- return {
+-- 	"williamboman/mason.nvim", version = "1.8.0",
+-- 	opts = {
+-- 		ensure_installed = {
+-- 			"bash",
+-- 			"stylua",
+-- 			"shellcheck",
+-- 			"flake8",
+-- 		},
+-- 	},
+-- }
 return {
   {
     'williamboman/mason.nvim',
-    version = '*',
+    version = '1.8.0',
     lazy = false,
-    opts = {},
+    opts = {
+    	ensure_installed = {
+    		"bash",
+    		"stylua",
+    		"flake8",
+		"lua",
+		"clangd",
+		"awk_langugage_server",
+		"jedi_language_server",
+    	},
+    },
   },
 
   -- Autocompletion
@@ -89,6 +110,7 @@ return {
           end,
         }
       })
+      require'lspconfig'.jedi_language_server.setup{}
     end
   }
 }
