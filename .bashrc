@@ -98,7 +98,9 @@ alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias alert='notify-send --urgency=normal -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+alias nsjoin='function _nsjoin() { nsenter -n -U --preserve-credentials -t $(lsns | grep $1 | tail -n 1 | awk '\''{print $4}'\''); }; _nsjoin'
 
 PATH=$PATH:$HOME/Repos/qeneth/
 
@@ -122,4 +124,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
+eval "$(_COMPILEDB_COMPLETE=source compiledb)"
 # export BEAR=1
+. "$HOME/.cargo/env"
