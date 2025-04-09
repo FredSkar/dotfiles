@@ -1,0 +1,69 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+palette:
+    black: '#262B44'
+    blue: '#4B95E9'
+    green: '#59C9A5'
+    orange: '#F07623'
+    red: '#D81E5B'
+    white: '#E0DEF4'
+    yellow: '#F3AE35'
+secondary_prompt:
+    foreground: p:green
+    background: transparent
+    template: '❯❯'
+transient_prompt:
+    foreground_templates:  [
+      "{{ if gt .Code 0}}red{{end}}",
+      "{{ if eq .Code 0}}green{{end}}",
+    ]
+    background: transparent
+    template: '❯'
+console_title_template: '{{ .Shell }} in {{ .Folder }}'
+upgrade:
+    source: cdn
+    interval: 168h
+    auto: false
+    notice: false
+blocks:
+    - type: prompt
+      alignment: left
+      newline: true
+      segments:
+        - type: session
+          style: plain
+          background: transparent
+          foreground: p:green
+          template: " {{- .UserName }}"
+        - type: path
+          style: plain
+          background: transparent
+          foreground: p:orange
+          template: '{{ .Path }}'
+          properties:
+            style: full
+    - type: rprompt
+      overflow: hidden
+      segments:
+        - type: executiontime
+          style: plain
+          background: transparent
+          foreground: p:blue
+          template: " {{ .FormattedMs }} "
+          properties:
+            threshold: 2000
+            style: austin
+    - type: prompt
+      alignment: left
+      newline: true
+      segments:
+        - type: text
+          style: plain
+          background: transparent
+          foreground_templates: [
+            "{{if gt .Code 0}}red{{end}}",
+            "{{if eq .Code 0}}green{{end}}",
+          ]
+          template: '❯'
+version: 3
+final_space: true
