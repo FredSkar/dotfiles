@@ -1,18 +1,7 @@
--- return {
--- 	"williamboman/mason.nvim", version = "1.8.0",
--- 	opts = {
--- 		ensure_installed = {
--- 			"bash",
--- 			"stylua",
--- 			"shellcheck",
--- 			"flake8",
--- 		},
--- 	},
--- }
 return {
   {
-    'williamboman/mason.nvim',
-    version = '1.8.0',
+    'mason-org/mason.nvim',
+    version = '2.1.x',
     lazy = false,
     opts = {
     	ensure_installed = {
@@ -30,7 +19,7 @@ return {
   -- Autocompletion
   {
     'hrsh7th/nvim-cmp',
-    version = '*',
+    version = '0.0.2',
     event = 'InsertEnter',
     config = function()
       local cmp = require('cmp')
@@ -56,13 +45,13 @@ return {
   -- LSP
   {
     'neovim/nvim-lspconfig',
-    version = '*',
+    version = '2.5.x',
     cmd = {'LspInfo', 'LspInstall', 'LspStart'},
     event = {'BufReadPre', 'BufNewFile'},
     dependencies = {
       {'hrsh7th/cmp-nvim-lsp'},
-      {'williamboman/mason.nvim'},
-      {'williamboman/mason-lspconfig.nvim'},
+      {'mason-org/mason.nvim'},
+      {'mason-org/mason-lspconfig.nvim'},
     },
     init = function()
       -- Reserve a space in the gutter

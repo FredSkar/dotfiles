@@ -2,7 +2,7 @@ return {
   "nvim-tree/nvim-web-devicons",
   "echasnovski/mini.icons",
   "folke/which-key.nvim",
-  version = "*",
+  version = "3.17.x",
   event = "VeryLazy",
   opts = {
     -- your configuration comes here

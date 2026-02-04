@@ -1,12 +1,13 @@
 local M = {
     "nvim-treesitter/nvim-treesitter",
-    version = '*',
+    version = '0.10.x',
     opts = {
 	    ensure_installed = {
 		    "bash",
 		    "python",
 		    "c",
 		    "Markdown",
+		    "lua",
 	    },
     },
     build = function()

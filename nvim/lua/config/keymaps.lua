@@ -13,6 +13,7 @@ local opts = {
 local keymap_others = {
     { "<leader>w", "<cmd>update!<CR>", desc = "Save" },
     { "<leader>q", "<cmd>q!<CR>", desc = "Quit" },
+    { "<leader>p", "<cmd>Ex<CR>", desc = "File Explorer" },
 }
 
 local keymap_b = {
@@ -60,6 +61,20 @@ local keymap_g = {
      { "<leader>fc", "<cmd>Telescope lsp_incoming_calls<cr>", desc = "Find callers" },
  }
 
+ local keymap_c = {
+     { "<leader>c", group = "Cscope" },
+     { "<leader>cvd", function() local sym = vim.fn.expand('<cword>')
+         vim.cmd("CsStackView open down " .. sym)
+     end,
+     desc = "View call stack down, functions who call the `<sym>`" 
+     },
+     { "<leader>cvu", function() local sym = vim.fn.expand('<cword>')
+         vim.cmd("CsStackView open up " .. sym)
+     end,
+     desc = "View call stack up, functions that this functions calls`<sym>`" 
+     },
+}
+
 whichkey.add(opts)
 whichkey.add(keymap_others)
 whichkey.add(keymap_l)
@@ -67,3 +82,4 @@ whichkey.add(keymap_g)
 whichkey.add(keymap_Z)
 whichkey.add(keymap_b)
 whichkey.add(keymap_f)
+whichkey.add(keymap_c)
